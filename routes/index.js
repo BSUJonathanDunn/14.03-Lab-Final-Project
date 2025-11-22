@@ -17,6 +17,22 @@ router.get('/', function(req, res, next){
   }
 });
 
+router.get('/about', function(req, res, next){
+  res.render('about');
+});
+
+router.get('/menu', function(req, res, next){
+  res.render('menu');
+});
+
+router.get('/feedback', function(req, res, next){
+  res.render('feedback');
+});
+
+router.get('/order_online', function(req, res, next){
+  res.render('order_online');
+});
+
 router.post('/create', function (req, res, next) {
     const { task } = req.body;
     try {
