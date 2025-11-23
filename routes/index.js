@@ -25,8 +25,14 @@ router.get('/menu', function(req, res, next){
 });
 
 /* GET feedback page */
-router.get('/feedback', function(req, res, next){
-  res.render('feedback');
+router.get('/feedback', (req, res) => {
+    req.db.query("SELECT * FROM comments", (err, results) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("DB error");
+        }
+        res.render('feedback', { comments: results });
+    });
 });
 
 /* GET order online page */
@@ -35,21 +41,21 @@ router.get('/order_online', function(req, res, next){
 });
 
 /* POST route to add a new menu item (optional) */
-router.post('/menu/create', function(req, res, next){
-  const { donutname, typenumber, typename, price, description } = req.body;
+router.post('/feedback/send', function(req, res, next){
+  const { first_name, last_name, rating, comment } = req.body;
 
   const query = `
-    INSERT INTO menu (donutname, typenumber, typename, price, description)
-    VALUES (?, ?, ?, ?, ?);
+    INSERT INTO comments (first_name, last_name, rating, comment)
+    VALUES (?, ?, ?, ?);
   `;
 
-  req.db.query(query, [donutname, typenumber, typename, price, description], (err, results) => {
+  req.db.query(query, [first_name, last_name, rating, comment], (err, results) => {
     if (err) {
-      console.error('Error adding menu item:', err);
-      return res.status(500).send('Error adding menu item');
+      console.error('Error adding comment:', err);
+      return res.status(500).send('Error adding comment');
     }
-    console.log('Menu item added successfully:', results);
-    res.redirect('/menu'); // Redirect to menu page after adding
+    console.log('Comment added successfully:', results);
+    res.redirect('/feedback'); // Redirect to menu page after adding
   });
 });
 
