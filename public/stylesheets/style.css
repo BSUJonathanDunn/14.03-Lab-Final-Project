@@ -102,6 +102,60 @@ ul#mobile_nav_wrapper {
   justify-content: center;
 }
 
+div.menu_section_wrapper {
+  display: flex;
+  justify-content: center;
+}
+
+button.menu_toggle{
+  cursor: pointer;
+  position: relative;
+  display: flex;
+  width: 80vw;
+  height: 50px;
+  align-items: center;
+  margin: 0 auto 0 auto;
+  background-color: #F7C64A;
+  border: 0 solid transparent;
+}
+
+h2.menu_heading {
+  margin: 0 auto 0 auto;
+}
+
+ol.menu_row {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start; /* top-align items */
+  justify-content: center;
+  width: 80vw;
+  height: auto;  /* was fixed at 300px */
+  gap: 10px;     /* add spacing between items */
+}
+
+ol.menu_row.hidden {
+  display: none;
+}
+
+ol.menu_row li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid black;
+  padding: 10px;
+  width: 200px;   /* smaller width for mobile */
+  max-width: 100%; /* ensure it never overflows */
+  height: auto;    /* let content decide height */
+  margin: 5px;
+  box-sizing: border-box;
+}
+
+
+.menu_toggle[aria-expanded="false"] .Menu_Type_Toggle {
+  transform: rotate(180deg);
+}
+
 @media (max-width: 768px) {
   ul#main_nav_wrapper {
     display: none;  /* hide normal menu */
@@ -109,5 +163,20 @@ ul#mobile_nav_wrapper {
 
   div.nav_burger_wrapper {
     display: block;  /* show hamburger icon */
+  }
+}
+
+@media (max-width: 500px) {
+  .menu_row {
+    flex-direction: column;   /* stack items vertically */
+    align-items: center;      /* center items horizontally */
+  }
+
+  ol.menu_row li {
+    width: 90%;               /* nearly full width */
+  }
+  
+  button.menu_toggle {
+    width: 95%;               /* stretch buttons slightly for mobile */
   }
 }
