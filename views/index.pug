@@ -1,9 +1,21 @@
 extends layout
 
 block content
-  hr
-  h2 Add a new task
-  form(method='POST' action='/create')
-    label(for='task') Task:
-    input(type='text', name='task', id='task', required)
-    button(type='submit') Create Task
+  div.manual_promo_button#left_button
+  div.manual_promo_button#right_button
+  div.promo_container
+    div.promo.promo_left
+      img(src='/images/donuts/sample.png' alt='Promo 1 Image')
+      div.promo_text
+        div.saffron_line
+        h2 Delicious Donuts Every Morning!
+        span.badge Special Offer
+        p Come enjoy our freshly made donuts. Buy 2, get 1 free.
+
+    div.promo.promo_right
+      div.promo_text
+        div.saffron_line
+        h2 Cozy Coffee, Freshly Brewed
+        span.badge Happy Hour 20% Off
+        p Pair your favorite donut with our gourmet coffee.
+      img(src='/images/donuts/sample.png' alt='Promo 2 Image')

@@ -1,21 +1,23 @@
 extends layout
 
 block content
-  h1 Menu 
-
   - const typeGroup = {};
   
   each item in menu
     - if (!typeGroup[item.typenumber]) typeGroup[item.typenumber] = [];
     - typeGroup[item.typenumber].push(item);
-  
-  each typeNumber in Object.keys(typeGroup).sort()
-    div(class="menu_section_wrapper")
-      button(tabindex='1' title='Menu section; click to expand or close.' aria-expanded='true' class='menu_toggle' aria-controls='menu_section_' + typeNumber)
-        h2(class='menu_heading') Type #{typeNumber} - #{typeGroup[typeNumber][0].typename}
-        svg(class='Menu_Type_Toggle' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 15 15' aria-hidden='true')
-          g(class='triangle_down' transform='translate(0)')
-            polygon(points='0,0 16,0 8,8')
-    ol(class='menu_row', id='menu_section_' + typeNumber)
-      each item in typeGroup[typeNumber]
-        li #{item.donutname} - $#{item.price} | #{item.description}
+  div(class="menu_section_wrapper")
+    each typeNumber in Object.keys(typeGroup).sort()
+        button(tabindex='1' title='Menu section; click to expand or close.' aria-expanded='true' class='menu_toggle' aria-controls='menu_section_' + typeNumber)
+          h2(class='menu_heading') #{typeGroup[typeNumber][0].typename}
+          svg(class='Menu_Type_Toggle' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 15 15' aria-hidden='true')
+            g(class='triangle_down' transform='translate(0)')
+              polygon(points='0,0 16,0 8,8' fill='#F7F7F7')
+        ol(class='menu_row', id='menu_section_' + typeNumber)
+          each item in typeGroup[typeNumber]
+            li
+              img(src='/images/donuts/sample.png' alt='Sample Donut Picture')
+              span.item_text
+                strong #{item.donutname} - $#{item.price}
+                br
+                | #{item.description}

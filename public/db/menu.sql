@@ -13,6 +13,14 @@ CREATE TABLE menu (
 
 INSERT INTO menu (donutname, typenumber, typename, price, description) VALUES
 ('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
+('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
+('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
+('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
+('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
+('Chocolate Frosted', 2, 'Frosted', 1.50, 'Chocolate icing on top'),
+('Sprinkles', 2, 'Frosted', 1.75, 'Covered with rainbow sprinkles'),
+('Chocolate Frosted', 2, 'Frosted', 1.50, 'Chocolate icing on top'),
+('Sprinkles', 2, 'Frosted', 1.75, 'Covered with rainbow sprinkles'),
 ('Chocolate Frosted', 2, 'Frosted', 1.50, 'Chocolate icing on top'),
 ('Sprinkles', 2, 'Frosted', 1.75, 'Covered with rainbow sprinkles'),
 ('Boston Cream', 3, 'Filled', 2.25, 'Chocolate glaze with custard'),

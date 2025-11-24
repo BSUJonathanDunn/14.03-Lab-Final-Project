@@ -61,12 +61,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
     span.innerHTML = reviewHTML;
   });
+  
+  /*************************************************** */
+  const promos = document.querySelectorAll('.promo');
+  let currentIndex = 0;
 
-  const starButtons = document.querySelectorAll('.rating_star');
+  if (promos.length <= 1) return;
 
-  starButtons.forEach(star => {
-    star.addEventListener('click', (event) => toggleStar(event.currentTarget));
+  // Hide all except first
+  promos.forEach((promo, idx) => {
+    if (idx !== 0) promo.classList.add('hidden');
   });
+
+  setInterval(() => {
+    
+    promos[currentIndex].classList.add('hidden');
+    if (currentIndex === promos.length - 1) currentIndex = -1;
+    currentIndex = (currentIndex + 1) % promos.length;
+    promos[currentIndex].classList.remove('hidden');
+  }, 10000);
 
 });
 
