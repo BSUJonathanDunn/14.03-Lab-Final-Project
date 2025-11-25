@@ -1,48 +1,51 @@
 extends layout
 
 block content
-  h2 Feedback 
-  div.comments_wrapper 
-    ul.comment_list
-      each comment in comments
-        li.reviews(data-id=comment.id, data-comment=comment.comment, data-rating=comment.rating, data-first=comment.first_name, data-last=comment.last_name)
-
-
-  hr
-  h2 Let Us Know Your Experience!
-  form(method='POST' action='/feedback/send')
-    div.name_input_wrapping
-      h3 Your Name
-      label(for='first_name') First: 
-      input(tabindex= '2', type='text', name='first_name', id='first_name', required)
-      label(for='last_name') Last: 
-      input(type='text', name='last_name', id='last_name')
+  //- New container to hold form and comments side by side
+  .feedback_page_container
+    //- ------------------- FEEDBACK FORM -------------------
+    div.comment_page_wrapper
+      h2 We Appreciate Your Feedback
+      form(method='POST' action='/feedback/send')
+        div.name_input_wrapping
+          input(tabindex= '2', type='text', name='first_name', id='first_name', placeholder='First Name', required)
+          input(tabindex= '3' type='text', name='last_name', placeholder='Last Name', id='last_name')
+        
+        div.user_rating_wrapping
+          input(type="hidden" name="rating" id="rating_input")
+          button(type='button' title='Star 1' aria-expanded='true' class='rating_star' data-id='1')
+            svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='1')
+              polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
+                      fill='none' stroke='black' stroke-width='1')
+          button(type='button' title='Star 2' aria-expanded='true' class='rating_star' data-id='2')
+            svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='2')
+              polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
+                      fill='none' stroke='black' stroke-width='1')
+          button(type='button' title='Star 3' aria-expanded='true' class='rating_star' data-id='3')
+            svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='3')
+              polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
+                      fill='none' stroke='black' stroke-width='1')
+          button(type='button' title='Star 4' aria-expanded='true' class='rating_star' data-id='4')
+            svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='4')
+              polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
+                      fill='none' stroke='black' stroke-width='1')
+          button(type='button' title='Star 5' aria-expanded='true' class='rating_star' data-id='5')
+            svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='5')
+              polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
+                      fill='none' stroke='black' stroke-width='1')
+        div.user_comment_wrap
+          textarea(id="comment", name="comment", rows="6", cols="50", placeholder="Tell us about the donut or our service.", required)
+        button(type='submit') Submit!
     
-    div.user_rating_wrapping
-      h3 Your Rating
-      input(type="hidden" name="rating" id="rating_input")
-      button(type='button' title='Star 1' aria-expanded='true' class='rating_star' data-id='1')
-        svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='1')
-          polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
-                  fill='none' stroke='black' stroke-width='1')
-      button(type='button' title='Star 2' aria-expanded='true' class='rating_star' data-id='2')
-        svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='2')
-          polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
-                  fill='none' stroke='black' stroke-width='1')
-      button(type='button' title='Star 3' aria-expanded='true' class='rating_star' data-id='3')
-        svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='3')
-          polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
-                  fill='none' stroke='black' stroke-width='1')
-      button(type='button' title='Star 4' aria-expanded='true' class='rating_star' data-id='4')
-        svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='4')
-          polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
-                  fill='none' stroke='black' stroke-width='1')
-      button(type='button' title='Star 5' aria-expanded='true' class='rating_star' data-id='5')
-        svg(xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' data-id='5')
-          polygon(points='15,0 18,10 29,10 20,18 23,29 15,22 7,29 10,18 1,10 12,10'
-                  fill='none' stroke='black' stroke-width='1')
-
-    div.user_comment_wrap
-      h3 Your Feedback 
-      textarea(id="comment", name="comment", rows="6", cols="50", placeholder="Enter your comment here", required)
-    button(type='submit') Submit!
+    //- ------------------- COMMENTS SECTION -------------------
+    div.comments_wrapper 
+      h2 Feedback 
+      ul.comment_list
+        each comment in comments
+          li.reviews(
+            data-id=comment.id, 
+            data-comment=comment.comment, 
+            data-rating=comment.rating, 
+            data-first=comment.first_name, 
+            data-last=comment.last_name
+          )

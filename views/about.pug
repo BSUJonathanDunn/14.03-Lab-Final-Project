@@ -1,11 +1,63 @@
 extends layout
 
 block content
-
-
-  hr
-  h2 Add a new task
-  form(method='POST' action='/create')
-    label(for='task') Task:
-    input(type='text', name='task', id='task', required)
-    button(type='submit') Create Task
+  .about_wrapper 
+    .intro_container 
+      img#about_logo(src='/images/logo_white.png' alt='Large downtown donut logo')
+      h1.company_name Downtown Donuts 
+      p.intro_text ---Serving up smiles, hot and fresh, since 1992.---
+    .time_line_container
+      ul.timeline_carosel 
+        li.carosel_individual
+          img.timeline_image(src='/images/logo_small.png' alt='Downtown Donut Logo Placeholder')
+          p.timeline_text. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+            irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        li.carosel_individual
+          p.timeline_text. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+            irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          img.timeline_image(src='/images/logo_small.png' alt='Downtown Donut Logo Placeholder')
+        li.carosel_individual
+          img.timeline_image(src='/images/logo_small.png' alt='Downtown Donut Logo Placeholder')
+          p.timeline_text. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+            irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        li.carosel_individual
+          p.timeline_text. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+            irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+          img.timeline_image(src='/images/logo_small.png' alt='Downtown Donut Logo Placeholder')
+        li.carosel_individual
+          img.timeline_image(src='/images/logo_small.png' alt='Downtown Donut Logo Placeholder')
+          p.timeline_text. 
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed 
+            do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco 
+            laboris nisi ut aliquip ex ea commodo consequat. Duis aute 
+            irure dolor in reprehenderit in voluptate velit esse cillum 
+            dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat 
+            non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    #timeline_navigation 
+      .timeline_left 
+      .timeline_right
