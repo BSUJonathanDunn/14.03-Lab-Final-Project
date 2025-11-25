@@ -1,0 +1,297 @@
+/***************************************************************************************/
+/***************************************************************************************/
+/* ----------------------- FEEDBACK / STARS ----------------------- */
+/***************************************************************************************/
+/***************************************************************************************/
+.comment_page_wrapper {
+  width: 80vw;
+  max-width: 1000px;
+  margin: 120px 120px 50px auto;
+  padding: 20px;
+  background-color: var(--sea-salt);
+  border-radius: 15px;
+  box-shadow: 2px 4px 12px rgba(0,0,0,0.15);
+  font-family: "Montserrat Regular", sans-serif;
+  color: #000000;
+}
+
+.comment_page_wrapper h2 {
+  font-family: "Montserrat Regular", sans-serif;
+  color: var(--dark-green);
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.comment_page_wrapper h3 {
+  font-family: "Montserrat Regular", sans-serif;
+  color: var(--dark-green);
+  margin-bottom: 10px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.name_input_wrapping,
+.user_rating_wrapping,
+.user_comment_wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+.name_input_wrapping label {
+  display: inline-block;
+  margin-right: 10px;
+  font-weight: 500;
+}
+
+.name_input_wrapping input[type="text"] {
+  padding: 8px;
+  border: 1px solid var(--saffron);
+  border-radius: 6px;
+}
+
+.user_rating_wrapping {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ----------------------- FEEDBACK / STARS (MODERN UPDATES) ----------------------- */
+.rating_star {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 2px;
+  display: inline-flex;
+  align-items: center;
+  transition: transform 0.2s ease-in-out;
+  font-size: 1em;
+}
+
+.rating_star svg {
+  width: 1em;
+  height: 1em;
+  fill: none;
+  stroke: var(--dark-green);
+  stroke-width: 1.5px;
+  transition: fill 0.25s ease-in-out, transform 0.2s ease-in-out;
+}
+
+.rating_star.selected svg,
+.rating_star:hover svg {
+  fill: var(--saffron);
+}
+
+.rating_star polygon {
+  fill: none;
+  stroke: var(--dark-green);
+  stroke-width: 2;
+  transition: fill 0.2s ease-in-out, stroke 0.2s ease-in-out;
+}
+
+.rating_star:hover polygon,
+.rating_star:hover ~ .rating_star polygon {
+  fill: var(--saffron);
+  stroke: var(--dark-green);
+}
+
+.rating_star.selected polygon {
+  fill: var(--saffron);
+  stroke: var(--dark-green);
+}
+
+.rating_star:hover {
+  transform: scale(1.2);
+}
+
+.user_comment_wrap textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid var(--saffron);
+  border-radius: 10px;
+  resize: vertical;
+}
+
+button[type="submit"] {
+  width: 200px;
+  margin: 20px auto 0 auto;
+  padding: 10px;
+  background-color: var(--saffron);
+  color: var(--dark-green);
+  border: none;
+  border-radius: 10px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 2px 4px 10px rgba(0,0,0,0.15);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+button[type="submit"]:hover {
+  transform: translateY(-2px);
+  box-shadow: 3px 6px 14px rgba(0,0,0,0.2);
+}
+
+/* ----------------------- COMMENTS LIST ----------------------- */
+.comments_wrapper {
+  margin-top: 0;
+  padding-right: 40px;
+}
+
+.comments_wrapper h2 {
+  font-family: "Montserrat Regular", sans-serif;
+  text-align: center;
+  color: var(--sea-salt);
+  position: sticky;
+}
+
+.comment_list {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment_list li.reviews {
+  padding: 15px;
+  border-radius: 10px;
+  background-color: #FFFFFF;
+  box-shadow: 1px 2px 6px rgba(0,0,0,0.1);
+  line-height: 1.4;
+  position: relative;
+}
+
+.comment_list li.reviews:nth-child(odd) {
+  border-left: 5px solid var(--saffron);
+  border-right: none;
+}
+
+.comment_list li.reviews:nth-child(even) {
+  border-left: none;
+  border-right: 5px solid var(--saffron);
+}
+
+.comment_list li.reviews:nth-child(even) > * {
+  padding-right: 10px;
+}
+
+.comment_list li.reviews svg {
+  width: 1em;
+  height: 1em;
+  vertical-align: middle;
+  fill: var(--saffron);
+  stroke: var(--dark-green);
+  stroke-width: 1px;
+  margin-right: 2px;
+}
+
+/* ----------------------- FEEDBACK PAGE CONTAINER ----------------------- */
+.feedback_page_container {
+  display: flex;
+  justify-content: center;
+  gap: 5%;
+  margin: 120px 5% 50px 5%;
+  max-width: 90vw;
+  height: calc(100vh - 140px);
+  position: relative;
+}
+
+.feedback_page_container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 3px;
+  background-color: var(--saffron);
+  transform: translateX(-50%);
+}
+
+.comment_page_wrapper {
+  width: 50%;
+  max-width: 600px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.comments_wrapper {
+  width: 50%;
+  max-width: 600px;
+  overflow-y: auto;
+  max-height: calc(100vh - 140px);
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.comment_list li.reviews {
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* ----------------------- RESPONSIVE ----------------------- */
+
+@media (max-width: 1024px) {
+  .feedback_page_container {
+    flex-direction: column;
+    gap: 5px;
+    margin: 30px 5% 30px 5%;
+    height: auto;
+  }
+
+  .feedback_page_container::before {
+    top: auto;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    transform: none;
+  }
+
+  .comments_wrapper {
+    padding: 0;
+  }
+
+  .comment_page_wrapper,
+  .comments_wrapper {
+    width: 100%;
+    max-width: 80%;
+    max-height: none;
+    margin: 0 auto;
+    overflow: visible;
+  }
+}
+
+@media (max-width: 768px) {
+  .comment_page_wrapper {
+    width: 90vw;
+    margin: 100px auto 30px auto;
+    padding: 15px;
+  }
+
+  .user_rating_wrapping {
+    justify-content: center;
+  }
+
+  button[type="submit"] {
+    width: 100%;
+  }
+}
+
+@media (max-width: 500px) {
+  .name_input_wrapping,
+  .user_comment_wrap {
+    flex-direction: column;
+  }
+
+  .name_input_wrapping input[type="text"] {
+    width: 100%;
+  }
+}

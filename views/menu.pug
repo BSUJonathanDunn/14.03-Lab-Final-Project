@@ -1,11 +1,19 @@
 extends layout
-
+block extraCSS
+  link(rel="stylesheet", href="/stylesheets/menu.css")
 block content
+  div.menu_search_wrapper
+    input#menu_search(type="text" placeholder="Search donuts...")
+    button#clear_search(type="button") ✕
+
+  p#no_results.hidden No donuts match your search.
+
   - const typeGroup = {};
-  
+
   each item in menu
     - if (!typeGroup[item.typenumber]) typeGroup[item.typenumber] = [];
     - typeGroup[item.typenumber].push(item);
+
   div(class="menu_section_wrapper")
     each typeNumber in Object.keys(typeGroup).sort()
         button(tabindex='1' title='Menu section; click to expand or close.' aria-expanded='true' class='menu_toggle' aria-controls='menu_section_' + typeNumber)
@@ -15,7 +23,11 @@ block content
               polygon(points='0,0 16,0 8,8' fill='#F7F7F7')
         ol(class='menu_row', id='menu_section_' + typeNumber)
           each item in typeGroup[typeNumber]
-            li
+            li.menu_item(
+              data-name=item.donutname.toLowerCase()
+              data-description=item.description.toLowerCase()
+              data-type=item.typename.toLowerCase()
+            )
               img(src='/images/donuts/sample.png' alt='Sample Donut Picture')
               span.item_text
                 strong #{item.donutname} - $#{item.price}

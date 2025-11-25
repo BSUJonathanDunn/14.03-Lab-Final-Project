@@ -1,0 +1,218 @@
+
+/***************************************************************************************/
+/***************************************************************************************/
+/*-----------------------------ABOUT PAGE---------------------------*/
+/***************************************************************************************/
+/***************************************************************************************/
+
+.about_wrapper {
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--dark-green);
+}
+
+.intro_container {
+  width: 100vw;
+  height: 50vh;
+  max-height: 800px;
+  margin-top: 100px;
+  background-color: var(--sea-salt);
+  position: relative;
+  border-bottom: 3px solid var(--saffron);
+}
+
+#about_logo {
+  position: absolute;
+  width: 300px;
+  left: 60%;
+  margin-top: 30px;
+}
+
+.company_name {
+  font-family: "Italianno Regular", cursive;
+  font-size: 50px;
+  position: absolute;
+  left: 20%;
+  margin-top: 200px;
+}
+
+.intro_text {
+  font-size: 20px;
+  position: absolute;
+  left: 25%;
+  margin-top: 280px;
+}
+
+.time_line_container {
+  width: 100%;
+  background-color: var(--dark-green);
+  position: relative;
+  border-bottom: 3px solid var(--saffron);
+  overflow: hidden;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.timeline_carosel {
+  display: flex;
+  width: 100%;
+  gap: 30px;
+  transition: transform 0.4s ease-in-out;
+}
+
+.carosel_individual {
+  flex-shrink: 0;
+  display: flex;
+  width: 50%;
+  height: auto;
+  background-color: var(--dark-green);
+  border: 10px inset var(--saffron);
+  border-radius: 20px;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 10px;
+}
+
+#timeline_navigation {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  margin-top: 10px;
+  padding-bottom: 10px;
+  gap: 20px;
+}
+
+.timeline_left::before {
+  content: "<";
+  font-size: 2rem;
+  color: var(--dark-green);
+  display: block;
+  text-align: center;
+}
+
+.timeline_right::before {
+  content: ">";
+  font-size: 2rem;
+  color: var(--dark-green);
+  display: block;
+  text-align: center;
+}
+
+.timeline_left,
+.timeline_right {
+  width: 40px;
+  height: 40px;
+  background-color: var(--saffron);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease, transform 0.2s ease, border 0.2s ease;
+}
+
+/* Hover effect for ACTIVE buttons only */
+.timeline_left:hover:not(.inactive),
+.timeline_right:hover:not(.inactive) {
+  transform: scale(1.1);
+  border: 2px solid var(--sea-salt);
+}
+
+/* Inactive button: no hover, no scale, no border change */
+.timeline_left.inactive,
+.timeline_right.inactive {
+  cursor: default;
+  border: none;
+  transform: none;
+}
+
+.timeline_image {
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+  border-radius: 20px;
+}
+
+.timeline_text {
+  color: var(--sea-salt);
+  margin: 0 auto;
+  font-size: 1.5rem !important;
+  line-height: 1.5rem !important;
+  letter-spacing: 0;
+}
+
+@media (max-width: 1279px) {
+  .timeline_text {
+    font-size: 20px;
+    line-height: 24px;
+    text-align: center;
+  }
+
+  .carosel_individual {
+    width: 90%;         /* IMPORTANT: allow enough width for vertical stacking */
+    flex-direction: column;
+    gap: 14px;
+    text-align: center;
+  }
+
+  .timeline_carosel {
+    width: 90%;
+  }
+
+  .intro_container {
+    display: flex;
+    flex-direction: column;
+  }
+
+  #about_logo {
+    position: relative;
+    left: 0;
+    margin: 20px auto 0 auto;
+  }
+
+  .company_name {
+    font-size: 40px;
+    position: relative;
+    margin: 10px auto 0 auto;
+    left: 0;
+  }
+
+  .intro_text {
+    font-size: 20px;
+    position: relative;
+    left: 0;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 600px) {
+  .timeline_text {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  .carosel_individual {
+    width: 90%;
+  }
+
+  .company_name {
+    display: none;
+  }
+
+  #about_logo {
+    position: relative;
+    left: 0;
+    margin: auto;
+  }
+
+  .intro_text {
+    font-size: 16px;
+    position: relative;
+    left: 0;
+    margin: 0 auto 70px auto;
+  }
+}

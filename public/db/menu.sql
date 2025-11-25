@@ -13,15 +13,11 @@ CREATE TABLE menu (
 
 INSERT INTO menu (donutname, typenumber, typename, price, description) VALUES
 ('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
-('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
-('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
-('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
-('Glazed Doughnut', 1, 'Classic', 1.25, 'Light and sugary'),
+('Sugar Twist', 1, 'Classic', 1.35, 'Twisted and coated in sugar'),
+('Old Fashioned', 1, 'Classic', 1.50, 'Crispy edges, soft center'),
 ('Chocolate Frosted', 2, 'Frosted', 1.50, 'Chocolate icing on top'),
 ('Sprinkles', 2, 'Frosted', 1.75, 'Covered with rainbow sprinkles'),
-('Chocolate Frosted', 2, 'Frosted', 1.50, 'Chocolate icing on top'),
-('Sprinkles', 2, 'Frosted', 1.75, 'Covered with rainbow sprinkles'),
-('Chocolate Frosted', 2, 'Frosted', 1.50, 'Chocolate icing on top'),
-('Sprinkles', 2, 'Frosted', 1.75, 'Covered with rainbow sprinkles'),
+('Maple Frosted', 2, 'Frosted', 1.75, 'Sugary maple glaze'),
 ('Boston Cream', 3, 'Filled', 2.25, 'Chocolate glaze with custard'),
-('Jelly Filled', 3, 'Filled', 2.00, 'Filled with strawberry jelly');
+('Jelly Filled', 3, 'Filled', 2.00, 'Strawberry jelly filling'),
+('Lemon Filled', 3, 'Filled', 2.15, 'Soft dough with lemon cream');

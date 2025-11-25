@@ -14,8 +14,119 @@ document.addEventListener('DOMContentLoaded', () => {
   // ------------------- PROMO SLIDESHOW -------------------
   initPromoSlideshow();
 
+  // ------------------- TIMELINE CAROUSEL -----------------
   initTimeLineCarousel();
+
+  // -------------------MENU SEARCH ----------------------
+  initDonutSearch();
 });
+
+function initDonutSearch() {
+  const searchInput = document.getElementById("menu_search");
+  const clearBtn = document.getElementById("clear_search");
+  const noResults = document.getElementById("no_results");
+
+  const menuItems = document.querySelectorAll(".menu_item");
+  const menuSections = document.querySelectorAll(".menu_row");
+  const menuToggles = document.querySelectorAll(".menu_toggle");
+
+  if (!searchInput || !menuItems.length) return;
+
+  // Store original HTML of strong elements (donut name + price)
+  menuItems.forEach(item => {
+    const nameEl = item.querySelector("strong");
+    if (nameEl && !nameEl.dataset.original) {
+      nameEl.dataset.original = nameEl.innerHTML;
+    }
+  });
+
+  function runSearch() {
+    const query = searchInput.value.toLowerCase().trim();
+
+    // Show clear button when typing
+    clearBtn.classList.toggle("visible", query.length > 0);
+
+    let anyMatch = false;
+
+    // Show/hide menu items based on search
+    menuItems.forEach(item => {
+      const name = item.dataset.name.toLowerCase();
+      const desc = item.dataset.description.toLowerCase();
+
+      const match = name.includes(query) || desc.includes(query);
+      item.classList.toggle("hidden", !match);
+      if (match) anyMatch = true;
+
+      // Highlight matched text while keeping original HTML
+      const nameEl = item.querySelector("strong");
+      if (nameEl) {
+        const originalHTML = nameEl.dataset.original;
+        if (query && name.includes(query)) {
+          const regex = new RegExp(`(${query})`, "gi");
+          nameEl.innerHTML = originalHTML.replace(regex, '<mark>$1</mark>');
+        } else {
+          nameEl.innerHTML = originalHTML;
+        }
+      }
+    });
+
+    // Show/hide "No results" text
+    noResults.classList.toggle("visible", !anyMatch);
+    noResults.classList.toggle("hidden", anyMatch);
+
+    // Hide categories with no visible items and update toggle border-radius
+    menuSections.forEach(section => {
+      const children = section.querySelectorAll(".menu_item");
+      const allHidden = [...children].every(i => i.classList.contains("hidden"));
+      section.classList.toggle("hidden", allHidden);
+
+      // Update border radius for corresponding toggle
+      menuToggles.forEach(btn => {
+        const id = btn.getAttribute("aria-controls");
+        if (id === section.getAttribute("id")) {
+          const isExpanded = btn.getAttribute("aria-expanded") === "true";
+          btn.style.borderRadius = allHidden
+            ? "20px"              // collapsed, round all corners
+            : isExpanded
+              ? "20px 20px 0 0"   // expanded, only top corners
+              : "20px";           // default
+        }
+      });
+    });
+
+    // Always expand categories while searching if they have matches
+    if (query.length > 0) {
+      menuToggles.forEach(btn => {
+        const id = btn.getAttribute("aria-controls");
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        const hasVisibleItems = [...target.querySelectorAll(".menu_item")]
+          .some(i => !i.classList.contains("hidden"));
+
+        if (hasVisibleItems) {
+          btn.setAttribute("aria-expanded", "true");
+          target.classList.remove("hidden");
+          btn.style.borderRadius = "20px 20px 0 0";
+        } else {
+          // No visible items, collapse
+          btn.setAttribute("aria-expanded", "false");
+          target.classList.add("hidden");
+          btn.style.borderRadius = "20px";
+        }
+      });
+    }
+  }
+
+  // Trigger search as user types
+  searchInput.addEventListener("input", runSearch);
+
+  // Clear search
+  clearBtn.addEventListener("click", () => {
+    searchInput.value = "";
+    runSearch();
+  });
+}
 
 function initTimeLineCarousel() {
   const left_button = document.querySelector('.timeline_left');
@@ -161,12 +272,15 @@ function updateStars(target, allStars, ratingInput) {
 function hoverStars(target, allStars) {
   const hoverID = Number(target.dataset.id);
   allStars.forEach(star => {
-    const starPoly = star.querySelector('polygon');
-    if (!starPoly) return;
+    const poly = star.querySelector('polygon');
+    if (!poly) return;
     const starID = Number(star.dataset.id);
 
     if (starID <= hoverID) {
-      starPoly.setAttribute('fill', 'var(--saffron)');
+      // Use style.fill instead of setAttribute
+      poly.style.fill = 'var(--saffron)';
+    } else {
+      poly.style.fill = 'none';
     }
   });
 }
@@ -174,16 +288,14 @@ function hoverStars(target, allStars) {
 function resetStars(allStars, ratingInput) {
   const rating = Number(ratingInput.value) || 0;
   allStars.forEach(star => {
-    const starPoly = star.querySelector('polygon');
-    if (!starPoly) return;
+    const poly = star.querySelector('polygon');
+    if (!poly) return;
     const starID = Number(star.dataset.id);
 
     if (starID <= rating) {
-      starPoly.setAttribute('fill', 'var(--saffron)');
-      star.classList.add('selected');
+      poly.style.fill = 'var(--saffron)';
     } else {
-      starPoly.setAttribute('fill', 'none');
-      star.classList.remove('selected');
+      poly.style.fill = 'none';
     }
   });
 }

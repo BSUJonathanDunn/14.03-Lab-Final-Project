@@ -1,0 +1,185 @@
+/***************************************************************************************/
+/***************************************************************************************/
+/* ----------------------- MENU SECTION ----------------------- */
+/***************************************************************************************/
+/***************************************************************************************/
+.menu_search_wrapper {
+  position: relative;
+  width: 300px; /* or whatever width you want for the search bar */
+  margin: 120px auto 20px auto; /* keeps it centered */
+}
+
+#menu_search {
+  width: 100%; /* fills the wrapper */
+  padding: 8px 40px 8px 12px; /* space for clear button on right */
+  border-radius: 20px;
+  border: 1px solid var(--cool-gray);
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+#clear_search {
+  position: absolute;
+  top: 50%;
+  right: 8px; /* distance from right edge of wrapper */
+  transform: translateY(-50%);
+  background-color: var(--saffron);
+  color: white;
+  border: none;
+  border-radius: 20px;
+  cursor: pointer;
+  padding: 6px 10px;
+  font-size: 0.9rem;
+  display: none; /* will be toggled via JS */
+  z-index: 10;
+  transition: background 0.3s;
+}
+
+#clear_search.visible {
+  display: inline-block;
+}
+
+#clear_search:hover {
+  background-color: #e6b93d;
+}
+
+#no_results {
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+  font-weight: bold;
+  color: var(--sea-salt);
+}
+
+#no_results.hidden {
+  display: none;
+}
+
+div.menu_section_wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 0 20px 0;
+}
+
+button.menu_toggle {
+  cursor: pointer;
+  display: flex;
+  width: 75vw;
+  height: 50px;
+  align-items: center;
+  margin: 0 auto;
+  background-color: #10291D;
+  color: #F7F7F7;
+  border: 1px solid var(--saffron);
+  border-bottom: 0;
+  border-radius: 20px 20px 0 0;
+}
+
+.menu_toggle[aria-expanded="false"] .Menu_Type_Toggle {
+  transform: rotate(180deg);
+}
+
+h2.menu_heading {
+  margin: 0 auto;
+  color: var(--sea-salt);
+}
+
+ol.menu_row {
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  width: 75vw;
+  gap: 10px;
+  background-color: var(--sea-salt);
+  padding: 0;
+  height: auto;
+  border-radius: 0 0 20px 20px;
+}
+
+ol.menu_row.hidden {
+  display: none;
+}
+
+ol.menu_row li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px solid #727272;
+  padding: 10px;
+  width: 200px;
+  max-width: 100%;
+  min-width: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  margin: 20px 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  box-shadow: 2px 2px 8px rgba(0,0,0,0.2);
+  background-color: var(--sea-salt);
+  transition: transform 0.2s;
+}
+
+ol.menu_row li:hover {
+  transform: scale(1.05);
+}
+
+ol.menu_row li img {
+  width: 120px;
+  height: 120px;
+  flex-shrink: 0;
+  border-bottom: 0.5px solid var(--saffron);
+  margin-bottom: 10px;
+}
+
+span.item_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow-wrap: break-word;
+  word-break: break-word;
+  text-align: center;
+  line-height: 1.0;
+}
+
+.menu_item.hidden {
+  opacity: 0;
+  transform: translateX(-10px);
+  pointer-events: none;
+  height: 0;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+  transition: all 0.25s ease;
+}
+
+.menu_item {
+  transition: all 0.25s ease;
+}
+/***************************************************************************************/
+/***************************************************************************************/
+/***************************************************************************************/
+/***************************************************************************************/
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+@media (max-width: 600px) {
+  #menu_search_wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #clear_search {
+    align-self: flex-end;  /* Right-align the clear button */
+    transform: scale(0.8) translateY(-65%);
+  }
+}
+
+@media (max-width: 500px) {
+  .menu_row { flex-direction: column; align-items: center; }
+  ol.menu_row li { width: 90%; }
+  button.menu_toggle { width: 90%; }
+}
