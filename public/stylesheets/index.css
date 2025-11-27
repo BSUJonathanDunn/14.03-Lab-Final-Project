@@ -98,8 +98,15 @@
   border-radius: 5px;
 }
 
-.promo::before { top: 10px; left: 10px; }
-.promo::after { bottom: 10px; right: 10px; }
+.promo::before { 
+  top: 10px; 
+  left: 10px; 
+}
+
+.promo::after { 
+  bottom: 10px; 
+  right: 10px; 
+}
 
 .saffron_line {
   width: 50px;
