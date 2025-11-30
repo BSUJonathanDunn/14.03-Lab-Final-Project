@@ -2,46 +2,98 @@ doctype html
 html
   head
     title= title
+    meta(name="viewport" content="width=device-width, initial-scale=1")
     link(rel='stylesheet', href='/stylesheets/layout.css')
     block extraCSS
-    script(src='/javascripts/script.js', defer)
+    script(src='/javascripts/layout.js', defer)
+    block extraJS
   body
-    div(class='main_body_wrapper')
-      header(class='header')
-        a(href='/' target='_self' class='nav_links')
-          img(src='/images/logo_small.png' alt='Downtown Donuts Small Logo' height='100px')
+    a.skip-link(href='#main-content') Skip to main content
+    nav.main_body_wrapper(role='navigation' aria-label='Primary')
+      header.header
+        a.nav_links(href='/' target='_self')
+          img(src='/images/logo_small.png' alt='Downtown Donuts Homepage' height='100px')
+        //-----MOBILE MENU BUTTON--------
+        div.nav_burger_wrapper
+          button.burger(
+            tabindex='1' 
+            title='Open main menu'
+            aria-label='Open main menu'
+            aria-expanded='false'
+            aria-controls='mobile_menu'
+            data-toggle='mobile-menu-open' 
+            data-toggle-target='body'
+            )
+            svg#Menu_Open(
+              xmlns='http://www.w3.org/2000/svg' 
+              width='30' 
+              height='22' 
+              viewBox='0 0 30 22' 
+              aria-hidden='true'
+              )
+              g#Group_85(data-name='Group 85' transform='translate(0)')
+                rect#Rectangle_46(
+                  data-name='Rectangle 46' 
+                  width='4' 
+                  height='30' 
+                  rx='1.948' 
+                  transform='translate(0 4) rotate(-90)' 
+                  fill='var(--saffron)'
+                  )
+              g#Group_86(data-name='Group 86' transform='translate(0 9)')
+                rect#Rectangle_47(
+                  data-name='Rectangle 47' 
+                  width='4' 
+                  height='30' 
+                  rx='1.948' 
+                  transform='translate(0 4) rotate(-90)' 
+                  fill='var(--saffron)'
+                  )
+              g#Group_87(data-name='Group 87' transform='translate(0 18)')
+                rect#Rectangle_48(
+                  data-name='Rectangle 48' 
+                  width='4' 
+                  height='30' 
+                  rx='1.948' 
+                  transform='translate(0 4) rotate(-90)' 
+                  fill='var(--saffron)'
+                  )
+          //-------MOBILE MENU FULL----------
+          nav.sliding_nav_menu#mobile_menu(role='navigation' aria-label='Mobile')
+            header.mobile_header
+              a.nav_links(href='/' target='_self')
+                img(src='/images/logo_small.png' alt='Downtown Donuts Homepage' height='100px')
 
-        div(class='nav_burger_wrapper')
-          button(tabindex='1' title='Main menu; tap to open.' aria-label='Main menu; tap to open.' class='burger' data-toggle='mobile-menu-open' data-toggle-target='body')
-            svg(id='Menu_Open' xmlns='http://www.w3.org/2000/svg' width='30' height='22' viewBox='0 0 30 22' aria-hidden='true')
-              g(id='Group_85' data-name='Group 85' transform='translate(0)')
-                rect(id='Rectangle_46' data-name='Rectangle 46' width='4' height='30' rx='1.948' transform='translate(0 4) rotate(-90)' fill='var(--saffron)')
-              g(id='Group_86' data-name='Group 86' transform='translate(0 9)')
-                rect(id='Rectangle_47' data-name='Rectangle 47' width='4' height='30' rx='1.948' transform='translate(0 4) rotate(-90)' fill='var(--saffron)')
-              g(id='Group_87' data-name='Group 87' transform='translate(0 18)')
-                rect(id='Rectangle_48' data-name='Rectangle 48' width='4' height='30' rx='1.948' transform='translate(0 4) rotate(-90)' fill='var(--saffron)')
-
-          div(class='sliding_nav_menu')
-            header(class='mobile_header')
-              a(href='/' target='_self' class='nav_links')
-                img(src='/images/logo_small.png' alt='Downtown Donuts Small Logo' height='100px')
-
-              button(tabIndex='1' title='Mobile menu; tap to close.' aria-label='Mobile menu; tap to close.' class='close' data-toggle='mobile-menu-open' data-toggle-target='body')
-                svg(id='Menu_Close' xmlns='http://www.w3.org/2000/svg' width='30' height='30' viewBox='0 0 30 30' aria-hidden='true')
+              button.close(
+                tabIndex='1' 
+                title='Close main menu.' 
+                aria-label='Close main menu.' 
+                aria-expanded='true'
+                aria-controls='mobile_menu'
+                data-toggle='mobile-menu-open' 
+                data-toggle-target='body'
+                )
+                svg#Menu_Close(
+                  xmlns='http://www.w3.org/2000/svg' 
+                  width='30' 
+                  height='30' 
+                  viewBox='0 0 30 30' 
+                  aria-hidden='true'
+                  )
                   line(x1='0' y1='0' x2='30' y2='30' stroke='#F7C64A' stroke-width='3')
                   line(x1='0' y1='30' x2='30' y2='0' stroke='#F7C64A' stroke-width='3')
 
-            ul(id='mobile_nav_wrapper')
+            ul.mobile_nav_wrapper
               li
-                a(href='/' target='_self' class='nav_links') Home
+                a.nav_links(href='/' target='_self') Home
               li
-                a(href='/menu' target='_self' class='nav_links') Menu
+                a.nav_links(href='/menu' target='_self') Menu
               li 
-                a(href='/about' target='_self' class='nav_links') Our Story
+                a.nav_links(href='/about' target='_self') Our Story
               li 
-                a(href='/feedback' target='_self' class='nav_links') Tell Us
-
-        ul(id='main_nav_wrapper')
+                a.nav_links(href='/feedback' target='_self') Tell Us
+        //-------- DESKTOP NAVIGATION --------
+        ul.main_nav_wrapper
           li
             a.main_nav_links(href='/' target='_self') Home
           li
@@ -51,9 +103,9 @@ html
           li 
             a.main_nav_links(href='/feedback' target='_self') Tell Us
           li 
-            input#online_order_bttn(
+            button#online_order_bttn(
               type='button'
-              value='Order Online'
               onclick='window.open("https://www.ubereats.com", "_blank")'
-            )
-    block content
+            ) Order Online
+    main#main-content
+      block content

@@ -1,10 +1,11 @@
-# CS208-full-stack
+# CS208-full-stack - FINAL PROJECT README
 
-This is a full-stack application for CS208, built with Node.js, Express, and MariaDB (MySQL). It serves as a template for developing web applications using modern JavaScript practices. Please read the following instructions carefully because some of the setup only needs to be done once. If you are experiencing problems, please refer to the troubleshooting section before requesting assistance or rerunning the setup scripts.
+This is a modified version of the CS208 full stack application. Setup is basically the same, but no need to setup the initial
+databases. They are provided to you from the setup.js under the setup scripts. Follow instructions as given.
 
 # Database Setup
 
-To set up the database, run the `install_db.sh` script. This script will install MariaDB and start the server running. You only need to run this script once per Codespace.
+First setup the databases with the`install_db.sh` script. This script will install MariaDB and start the server running. You only need to run this script once per Codespace.
 
 
 ```bash
@@ -40,15 +41,6 @@ Uptime:                 10 min 23 sec
 
 Threads: 1  Questions: 90  Slow queries: 0  Opens: 33  Open tables: 26  Queries per second avg: 0.144
 ```
-
-Create the initial tables:
-
-```bash
-sudo mysql -u root -p < ./setup_scripts/create_demo_table.sql
-```
-
-Refer to the create_demo_table.sql file for details about the table and its fields. 
-
 
 Check to make sure the tables were created correctly
 ```bash

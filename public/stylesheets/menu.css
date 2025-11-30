@@ -77,6 +77,11 @@ button.menu_toggle {
   border-radius: 20px 20px 0 0;
 }
 
+button.menu_toggle:focus {
+  background-color: #183d2b;
+  border: 1.5px solid var(--cool-gray);
+}
+
 .menu_toggle[aria-expanded="false"] .Menu_Type_Toggle {
   transform: rotate(180deg);
 }

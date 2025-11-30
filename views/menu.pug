@@ -1,34 +1,51 @@
 extends layout
 block extraCSS
   link(rel="stylesheet", href="/stylesheets/menu.css")
+block extraJS
+  script(src='/javascripts/menu.js', defer)
 block content
+  //------ SEARCH BAR ---------
   div.menu_search_wrapper
-    input#menu_search(type="text" placeholder="Search donuts...")
-    button#clear_search(type="button") ✕
+    input#menu_search(
+      type="text" 
+      placeholder="Search donuts..." 
+      aria-label="Search donuts"
+      )
+    button#clear_search(type="button" aria-label="Clear search") ✕
 
-  p#no_results.hidden No donuts match your search.
-
+  p#no_results.hidden(aria-live="polite") No donuts match your search.
+  //-------- MENU ITEMS AND ROW CREATION ---------
   - const typeGroup = {};
 
   each item in menu
     - if (!typeGroup[item.typenumber]) typeGroup[item.typenumber] = [];
     - typeGroup[item.typenumber].push(item);
 
-  div(class="menu_section_wrapper")
+  div.menu_section_wrapper
     each typeNumber in Object.keys(typeGroup).sort()
-        button(tabindex='1' title='Menu section; click to expand or close.' aria-expanded='true' class='menu_toggle' aria-controls='menu_section_' + typeNumber)
-          h2(class='menu_heading') #{typeGroup[typeNumber][0].typename}
-          svg(class='Menu_Type_Toggle' xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 15 15' aria-hidden='true')
-            g(class='triangle_down' transform='translate(0)')
+        button.menu_toggle(
+          aria-label='Toggle #{typeGroup[typeNumber][0].typename} menu section' 
+          aria-expanded='true' 
+          aria-controls='menu_section_' + typeNumber
+          )
+          h2.menu_heading #{typeGroup[typeNumber][0].typename}
+          svg.Menu_Type_Toggle(
+            xmlns='http://www.w3.org/2000/svg' 
+            width='16' 
+            height='16' 
+            viewBox='0 0 15 15' 
+            aria-hidden='true'
+            )
+            g.triangle_down(transform='translate(0)')
               polygon(points='0,0 16,0 8,8' fill='#F7F7F7')
-        ol(class='menu_row', id='menu_section_' + typeNumber)
+        ol.menu_row(id='menu_section_' + typeNumber)
           each item in typeGroup[typeNumber]
             li.menu_item(
               data-name=item.donutname.toLowerCase()
               data-description=item.description.toLowerCase()
               data-type=item.typename.toLowerCase()
             )
-              img(src='/images/donuts/sample.png' alt='Sample Donut Picture')
+              img(src='/images/donuts/sample.png' alt=item.donutname + ' - ' + item.description)
               span.item_text
                 strong #{item.donutname} - $#{item.price}
                 br

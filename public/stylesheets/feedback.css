@@ -1,8 +1,10 @@
-/***************************************************************************************/
-/***************************************************************************************/
-/* ----------------------- FEEDBACK / STARS ----------------------- */
-/***************************************************************************************/
-/***************************************************************************************/
+/* ----------------------- INDIVIDUAL FORM CSS ----------------------- */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .comment_page_wrapper {
   width: 80vw;
   max-width: 1000px;
@@ -26,12 +28,6 @@
   font-family: "Montserrat Regular", sans-serif;
   color: var(--dark-green);
   margin-bottom: 10px;
-}
-
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
 }
 
 .name_input_wrapping,
@@ -59,15 +55,15 @@ form {
   display: flex;
   flex-direction: row;
   align-items: center;
-  gap: 5px;
+  gap: 2px;
+  justify-content: flex-start;
 }
 
-/* ----------------------- FEEDBACK / STARS (MODERN UPDATES) ----------------------- */
 .rating_star {
   background: none;
   border: none;
   cursor: pointer;
-  padding: 0 2px;
+  padding: 0;
   display: inline-flex;
   align-items: center;
   transition: transform 0.2s ease-in-out;
@@ -75,6 +71,7 @@ form {
 }
 
 .rating_star svg {
+  display: block;
   width: 1em;
   height: 1em;
   fill: none;
@@ -137,7 +134,7 @@ button[type="submit"]:hover {
   box-shadow: 3px 6px 14px rgba(0,0,0,0.2);
 }
 
-/* ----------------------- COMMENTS LIST ----------------------- */
+/* ----------------------- COMMENTS LIST CSS ----------------------- */
 .comments_wrapper {
   margin-top: 0;
   padding-right: 40px;
@@ -175,10 +172,6 @@ button[type="submit"]:hover {
 .comment_list li.reviews:nth-child(even) {
   border-left: none;
   border-right: 5px solid var(--saffron);
-}
-
-.comment_list li.reviews:nth-child(even) > * {
-  padding-right: 10px;
 }
 
 .comment_list li.reviews svg {
