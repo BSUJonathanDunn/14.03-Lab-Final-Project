@@ -2,6 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const mysql = require('mysql2');
 
+//Setting up the menu and comments tables
 const menuFilePath = path.join(__dirname, '../public/db/menu.sql');
 const commFilePath = path.join(__dirname, '../public/db/comments.sql');
 

@@ -1,11 +1,11 @@
 # CS208-full-stack - FINAL PROJECT README
 
 This is a modified version of the CS208 full stack application. Setup is basically the same, but no need to setup the initial
-databases. They are provided to you from the setup.js under the setup scripts. Follow instructions as given.
+databases. They will automatically set themselves up by just using npm start.
 
 # Database Setup
 
-First setup the databases with the`install_db.sh` script. This script will install MariaDB and start the server running. You only need to run this script once per Codespace.
+First setup the databases with the `install_db.sh` script. This script will install MariaDB and start the server running. You only need to run this script once per Codespace.
 
 
 ```bash
@@ -41,25 +41,6 @@ Uptime:                 10 min 23 sec
 
 Threads: 1  Questions: 90  Slow queries: 0  Opens: 33  Open tables: 26  Queries per second avg: 0.144
 ```
-
-Check to make sure the tables were created correctly
-```bash
-mysql -u root -p -e 'show databases;'
-```
-
-```
-Enter password: 
-+--------------------+
-| Database           |
-+--------------------+
-| cs208demo          |
-| information_schema |
-| mysql              |
-| performance_schema |
-| sys                |
-+--------------------+
-```
-
 
 # Node.js Setup
 
@@ -99,16 +80,15 @@ Threads: 1  Questions: 90  Slow queries: 0  Opens: 33  Open tables: 26  Queries 
 
 ## Check that the demo database is created
 
-You can check if the demo database is created by running the following command in the MariaDB shell if you don't see a `cs208demo` database listed in the output of the command below, you can run the `create_demo_table.sql` script to create it.
+The databases and tables for this project should automatically be created when mariadb is installed and npm is ran. You can check to see if `downtowndonut` was created by doing the following statement in the terminal. If it doesn't show up after starting the project, than the tables within db were not called correctly within setup.js in setup_scripts folder.
 
 ```bash
-@shanep ➜ /workspaces/CS208-full-stack (master) $ mysql -u root -p -e 'show databases;'
+$ mysql -u root -p -e 'show databases;'
 Enter password:
 +--------------------+
 | Database           |
 +--------------------+
-| cs208demo          |
-| demo               |
+| downtowndonut      |
 | information_schema |
 | mysql              |
 | performance_schema |

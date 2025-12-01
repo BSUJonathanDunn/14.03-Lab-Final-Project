@@ -3,6 +3,7 @@ const createError = require('http-errors');
 const path = require('path');
 
 const { dbMiddleware } = require('./bin/db');
+//Initializing the tables for the site menu and comments
 const initializeDatabase = require('./setup_scripts/setup');
 
 const indexRouter = require('./routes/index');

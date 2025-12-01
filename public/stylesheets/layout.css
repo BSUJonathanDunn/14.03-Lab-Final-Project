@@ -6,6 +6,31 @@
   --cool-gray: #7e7f9a;
 }
 
+/*------------ WEBKIT ---------------------*/
+::-webkit-scrollbar {
+  width: 12px;   
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-green);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--cool-gray);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a9cc;
+}
+
+/*---------- FIREFOX -------------*/
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--cool-gray) var(--dark-green);
+}
+
 body {
   margin: 0;
   padding: 0;
