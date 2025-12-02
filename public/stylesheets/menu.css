@@ -1,17 +1,13 @@
-/***************************************************************************************/
-/***************************************************************************************/
 /* ----------------------- MENU SECTION ----------------------- */
-/***************************************************************************************/
-/***************************************************************************************/
 .menu_search_wrapper {
   position: relative;
-  width: 300px; /* or whatever width you want for the search bar */
-  margin: 120px auto 20px auto; /* keeps it centered */
+  width: 300px;
+  margin: 120px auto 20px auto;
 }
 
 #menu_search {
-  width: 100%; /* fills the wrapper */
-  padding: 8px 40px 8px 12px; /* space for clear button on right */
+  width: 100%;
+  padding: 8px 40px 8px 12px;
   border-radius: 20px;
   border: 1px solid var(--cool-gray);
   font-size: 1rem;
@@ -21,7 +17,7 @@
 #clear_search {
   position: absolute;
   top: 50%;
-  right: 8px; /* distance from right edge of wrapper */
+  right: 8px;
   transform: translateY(-50%);
   background-color: var(--saffron);
   color: white;
@@ -30,7 +26,7 @@
   cursor: pointer;
   padding: 6px 10px;
   font-size: 0.9rem;
-  display: none; /* will be toggled via JS */
+  display: none;
   z-index: 10;
   transition: background 0.3s;
 }
@@ -165,12 +161,8 @@ span.item_text {
 .menu_item {
   transition: all 0.25s ease;
 }
-/***************************************************************************************/
-/***************************************************************************************/
-/***************************************************************************************/
-/***************************************************************************************/
 
-/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+/* ---------- RESPONSIVE ---------- */
 @media (max-width: 600px) {
   #menu_search_wrapper {
     flex-direction: column;
@@ -178,7 +170,7 @@ span.item_text {
   }
 
   #clear_search {
-    align-self: flex-end;  /* Right-align the clear button */
+    align-self: flex-end;
     transform: scale(0.8) translateY(-65%);
   }
 }

@@ -1,10 +1,5 @@
 
-/***************************************************************************************/
-/***************************************************************************************/
 /*-----------------------------ABOUT PAGE---------------------------*/
-/***************************************************************************************/
-/***************************************************************************************/
-
 .about_wrapper {
   width: 100vw;
   height: 100vh;
@@ -115,14 +110,12 @@
   transition: background-color 0.3s ease, transform 0.2s ease, border 0.2s ease;
 }
 
-/* Hover effect for ACTIVE buttons only */
 .timeline_left:hover:not(.inactive),
 .timeline_right:hover:not(.inactive) {
   transform: scale(1.1);
   border: 2px solid var(--sea-salt);
 }
 
-/* Inactive button: no hover, no scale, no border change */
 .timeline_left.inactive,
 .timeline_right.inactive {
   cursor: default;
@@ -145,6 +138,8 @@
   letter-spacing: 0;
 }
 
+/*--------- RESPONSIVE ----------*/
+
 @media (max-width: 1279px) {
   .timeline_text {
     font-size: 20px;
@@ -153,7 +148,7 @@
   }
 
   .carosel_individual {
-    width: 90%;         /* IMPORTANT: allow enough width for vertical stacking */
+    width: 90%;         
     flex-direction: column;
     gap: 14px;
     text-align: center;
